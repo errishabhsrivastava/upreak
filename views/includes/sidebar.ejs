@@ -1,0 +1,272 @@
+<nav class="sidebar sidebar-offcanvas" id="sidebar">
+  <ul class="nav">
+    <li class="nav-item">
+      <a class="nav-link" href="/dash_index">
+        <i class="icon-grid menu-icon"></i>
+        <span class="menu-title">Dashboard</span>
+      </a>
+    </li>
+  <% if (session.role === 'Master') { %>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#admin" aria-expanded="false" aria-controls="admin">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">Admins</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="admin">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/add_admin"> Add Admins </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/view_admins"> View Admins </a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#subadmin" aria-expanded="false" aria-controls="subadmin">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">Sub Admins</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="subadmin">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/add_subadmin"> Add Sub Admins </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/view_subadmins"> View Sub Admins </a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#job_seekers" aria-expanded="false" aria-controls="job_seekers">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">Job Seekers</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="job_seekers">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/add_job_seekers"> Add Job Seeker </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/view_job_seekers"> View Job Seekers </a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#feedback" aria-expanded="false" aria-controls="feedback">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">Feedback</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="feedback">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/view_feedbacks"> View Feedbacks</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#ques" aria-expanded="false" aria-controls="ques">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">Questions</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ques">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/add_ques"> Add Questions</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/view_ques"> View Questions</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#verify" aria-expanded="false" aria-controls="verify">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">Verification</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="verify">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/verify_job_seeker"> Verify Phone </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/verify_job_seeker2"> Verify Email</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#register" aria-expanded="false" aria-controls="verify">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title"> Form Detils</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="register">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/registration_details"> Partner Details</a></li>
+            <li class="nav-item"> <a class="nav-link" href="/contact_details"> Contact Details</a></li>
+          </ul>
+        </div>
+      </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+          <i class="icon-head menu-icon"></i>
+          <span class="menu-title">User Pages</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="auth">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/login"> Login </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/register"> Register </a></li>
+          </ul>
+        </div>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link" data-toggle="collapse" href="#error" aria-expanded="false" aria-controls="error">
+          <i class="icon-ban menu-icon"></i>
+          <span class="menu-title">Error pages</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="error">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a class="nav-link" href="/error-404"> 404 </a></li>
+            <li class="nav-item"> <a class="nav-link" href="/error-500"> 500 </a></li>
+          </ul>
+        </div>
+      </li>         -->
+    </ul>
+  <% }  else  if (session.role === 'Admin') { %>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#job_seekers" aria-expanded="false" aria-controls="job_seekers">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Job Seekers</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="job_seekers">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/add_job_seekers"> Add Job Seeker </a></li>
+          <li class="nav-item"> <a class="nav-link" href="/view_job_seekers"> View Job Seekers </a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#feedback" aria-expanded="false" aria-controls="feedback">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Feedback</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="feedback">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/view_feedbacks"> View Feedbacks</a></li>
+        </ul>
+      </div>
+    </li>  
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ques" aria-expanded="false" aria-controls="ques">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Questions</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ques">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/add_ques"> Add Questions</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/view_ques"> View Questions</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#verify" aria-expanded="false" aria-controls="verify">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Verification</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="verify">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/verify_job_seeker"> Verify Phone</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/verify_job_seeker2"> Verify Email</a></li>
+        </ul>
+      </div>
+    </li>
+    </ul>
+  <% }  else  if (session.role === 'SubAdmin') { %>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#job_seekers" aria-expanded="false" aria-controls="job_seekers">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Job Seekers</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="job_seekers">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/view_job_seekers"> View Job Seekers </a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#feedback" aria-expanded="false" aria-controls="feedback">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Feedback</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="feedback">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/view_feedbacks"> View Feedbacks</a></li>
+        </ul>
+      </div>
+    </li> 
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#ques" aria-expanded="false" aria-controls="ques">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Questions</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="ques">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/view_ques"> View Questions</a></li>
+        </ul>
+      </div>
+    </li>
+  <% }  else  if (session.role === 'User') { %>
+    
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#feedback" aria-expanded="false" aria-controls="feedback">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Feedback</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="feedback">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/add_feedback"> Add Feedback</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#details" aria-expanded="false" aria-controls="details">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Details</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="details">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/edit_details"> Edit Details</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/view_details"> View Details</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#verify" aria-expanded="false" aria-controls="verify">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Verification</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="verify">
+        <ul class="nav flex-column sub-menu">
+          <li class="nav-item"> <a class="nav-link" href="/verify_job_seeker"> Verify Phone</a></li>
+          <li class="nav-item"> <a class="nav-link" href="/verify_job_seeker2"> Verify Email</a></li>
+        </ul>
+      </div>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="collapse" href="#support" aria-expanded="false" aria-controls="support">
+        <i class="icon-head menu-icon"></i>
+        <span class="menu-title">Support</span>
+        <i class="menu-arrow"></i>
+      </a>
+      <div class="collapse" id="Support">
+        <ul class="nav flex-column sub-menu">
+          <!-- <li class="nav-item"> <a class="nav-link" href="/edit-job_seeker"> Edit Job Seekers  </a></li> -->
+          <li class="nav-item"> <a class="nav-link" href="/help"> Help </a></li>
+        </ul>
+      </div>
+    </li>    
+<% } %>  
+</ul>
+</nav>

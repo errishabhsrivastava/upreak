@@ -1,0 +1,1486 @@
+<%- include('includes/head.ejs') %>
+
+<body>
+    <div class="container-scroller">
+      <!-- partial:partials/_navbar.html -->
+      <%- include('includes/navbar.ejs') %>
+      <!-- partial -->
+      <div class="container-fluid page-body-wrapper">
+        <!-- partial -->
+        <!-- partial:partials/_sidebar.html -->
+        <%- include('includes/sidebar.ejs') %>
+        <!-- partial -->
+         <div class="main-panel"> 
+          <div class="content-wrapper">
+            <div class="row">
+               <div class="col-md-12 grid-margin">
+               <div class="row">
+                  <div class="col-12 col-xl-8 mb-4 mb-xl-0">
+                     <h3 class="font-weight-bold">Welcome!</h3>
+                     <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
+                  </div>
+                  <div class="col-12 col-xl-4">
+                     <div class="justify-content-end d-flex">
+                     <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                     <button class="btn btn-sm btn-light bg-white dropdown-toggle" type="button" id="dropdownMenuDate2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        <i class="mdi mdi-calendar"></i> Today (10 Jan 2021)
+                     </button>
+                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
+                        <a class="dropdown-item" href="#">January - March</a>
+                        <a class="dropdown-item" href="#">March - June</a>
+                        <a class="dropdown-item" href="#">June - August</a>
+                        <a class="dropdown-item" href="#">August - November</a>
+                     </div>
+                     </div>
+                     </div>
+                  </div>
+               </div>
+               </div>
+            </div>
+            <div class="row">
+               <div class="col-md-12 ">
+                     <form id="formAccountSettings" method="POST" action="/save_job_seekers" enctype="multipart/form-data">
+                        
+                        <div class="card shadow mb-4">
+                           <div class="card-header"> <h5>Personal Details</h5>
+                           </div> 
+                           <div class="card-body">
+                     <%= console.log(locals) %>
+                           <div class="row">
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label> Name</label>                                 
+                                    <input type="text" id="name" name="name" value="<%- typeof locals != 'undefined' ? locals.name : '' %>" class="form-control" autocomplete="off" placeholder="Enter Your Name" <%= ( ViewUser === 'view') ? 'readonly' :'' %>>
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>Mobile Number</label>
+                                    <input type="tel" placeholder="e.g. 9876543210" min="10" max="13" id="mobilenumber" name="mobilenumber" value="<%- typeof locals != 'undefined' ? locals.phonenumber : '' %>" class="form-control "<%= ( ViewUser === 'view') ? 'readonly' :'' %>>
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>WhatsApp Number</label>
+                                    
+                                    <input type="tel" placeholder="e.g. 9876543210" min="10" max="13" id="whatsappenumber" name="whatsappnumber"  value="<%- typeof locals != 'undefined' ? locals.whatsappnumber : '' %>"class="form-control "<%= ( ViewUser === 'view') ? 'readonly' :'' %>>
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>Date of Birth</label>                                 
+                                    <input type="text" id="dob" name="dob" value="<%- typeof locals != 'undefined' ? locals.dob : '' %>" placeholder="dd-mm-yyyy"  data-provide="datepicker" data-date-end-date="0d" class="form-control" style="cursor: pointer;"<%= ( ViewUser === 'view') ? 'readonly' :'' %>>
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" class="form-control" placeholder="Your email address" id="email" name="email" value="<%- typeof locals != 'undefined' ? locals.emailid : '' %>"<%= ( ViewUser === 'view') ? 'readonly' :'' %>>
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>Password</label>                                 
+                                    <input type="<%-  session.role === 'User' ? 'text':'password' %>" id="password" name="password" autocomplete="off" value="<%- typeof locals != 'undefined' ? locals.password : '' %>" class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %>>
+                                 </div>
+                              </div>                          
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>Area</label>                                    
+                                    <input type="text" id="area" name="area" value="<%- typeof locals != 'undefined' ? locals.area : '' %>"class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %>>
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>City</label>                                    
+                                    <input type="text" id="city" name="city" value="<%- typeof locals != 'undefined' ? locals.city: '' %>"class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>State</label>
+                                    <select id="state" name="state"class="form-control">
+                                       <option value=""> Select State</option>
+                                       <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
+                                       <option value="Andhra Pradesh">Andhra Pradesh</option>
+                                       <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+                                       <option value="Assam">Assam</option>
+                                       <option value="Bihar">Bihar</option>
+                                       <option value="Chandigarh">Chandigarh</option>
+                                       <option value="Chhattisgarh">Chhattisgarh</option>
+                                       <option value="Dadra and Nagar Haveli">Dadra and Nagar Haveli</option>
+                                       <option value="Daman and Diu">Daman and Diu</option>
+                                       <option value="Delhi">Delhi</option>
+                                       <option value="Goa">Goa</option>
+                                       <option value="Gujarat">Gujarat</option>
+                                       <option value="Haryana">Haryana</option>
+                                       <option value="Himachal Pradesh">Himachal Pradesh</option>
+                                       <option value="Jammu and Kashmir">Jammu and Kashmir</option>
+                                       <option value="Jharkhand">Jharkhand</option>
+                                       <option value="Karnataka">Karnataka</option>
+                                       <option value="Kerala">Kerala</option>
+                                       <option value="Lakshadweep">Lakshadweep</option>
+                                       <option value="Madhya Pradesh">Madhya Pradesh</option>
+                                       <option value="Maharashtra">Maharashtra</option>
+                                       <option value="Manipur">Manipur</option>
+                                       <option value="Meghalaya">Meghalaya</option>
+                                       <option value="Mizoram">Mizoram</option>
+                                       <option value="Nagaland">Nagaland</option>
+                                       <option value="Orissa">Orissa</option>
+                                       <option value="Pondicherry">Pondicherry</option>
+                                       <option value="Punjab">Punjab</option>
+                                       <option value="Rajasthan">Rajasthan</option>
+                                       <option value="Sikkim">Sikkim</option>
+                                       <option value="Tamil Nadu">Tamil Nadu</option>
+                                       <option value="Telangana">Telangana</option>
+                                       <option value="Tripura">Tripura</option>
+                                       <option value="Uttaranchal">Uttaranchal</option>
+                                       <option value="Uttar Pradesh">Uttar Pradesh</option>
+                                       <option value="West Bengal">West Bengal</option>
+                                    </select>
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>Pincode</label>                                    
+                                    <input type="tel" id="pincode" name="pincode" value="<%- typeof locals != 'undefined' ? locals.pincode : '' %>"class="form-control" <%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>Gender</label>
+                                    <input type="text" id="gender" name="gender" value="<%- typeof locals != 'undefined' ? locals.gender : '' %>"class="form-control" <%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                 </div>
+                              </div>
+                              <div class="mb-3 col-md-3">
+                                 <div class="form-group">
+                                    <label>Marital Status</label>
+                                    <input type="text" id="maritalstatus" name="maritalstatus" value="<%- typeof locals != 'undefined' ? locals.marragestatus : '' %>"class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                 </div>
+                              </div>
+                           </div>
+                           </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                           <div class="card-header"> <h5>Education Details</h5>
+                           </div> 
+                           <div class="card-body">
+                              <h3 class="card-title">10th Details</h3>
+                              <div class="row">
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Qualification</label>
+                                       
+                                       <select id="pgqualification" name="pgqualification" class="form-control" <%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value=""> Select Degree</option>
+         <option value="ME">ME</option>
+         <option value="M.TECH">M.TECH</option>
+         <option value="MSC">MSC</option>
+         <option value="M.com">M.com</option>
+         <option value="MCA">MCA</option>
+         <option value="MBA">MBA</option>
+         <option value="Others">Others</option>
+         </select>
+                                       <label class="error er-field" id="pgqualification-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>University</label>
+                                       <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true">
+                                       <option value=""> Select Branch </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Course Type</label>
+                                       <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true">
+                                       <option value=""> Select Branch </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Percentage</label>
+                                       <input type="number" id="pgp" name="pgp" placeholder="Eg: 85.77" min="0" max="100" step="0.01" value="" class=" form-control" fdprocessedid="rg9xiq">
+                                       <label class="error er-field" id="pgp-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Year of Start</label>
+                                       <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+         <option value="" selected="selected"> Select Year </option>
+         <option value="2026">2026</option>
+         <option value="2025">2025</option>
+         <option value="2024">2024</option>
+         <option value="2023">2023</option>
+         <option value="2022">2022</option>
+         <option value="2021">2021</option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>
+         <option value="2017">2017</option>
+         <option value="2016">2016</option>
+         <option value="2015">2015</option>
+         <option value="2014">2014</option>
+         <option value="2013">2013</option>
+         <option value="2012">2012</option>
+         <option value="2011">2011</option>
+         <option value="2010">2010</option>
+         <option value="2009">2009</option>
+         <option value="2008">2008</option>
+         <option value="2007">2007</option>
+         <option value="2006">2006</option>
+         <option value="2005">2005</option>
+         <option value="2004">2004</option>
+         <option value="2003">2003</option>
+         <option value="2002">2002</option>
+         <option value="2001">2001</option>
+         <option value="2000">2000</option>
+         <option value="1999">1999</option>
+         <option value="1998">1998</option>
+         <option value="1997">1997</option>
+         <option value="1996">1996</option>
+         <option value="1995">1995</option>
+         <option value="1994">1994</option>
+         <option value="1993">1993</option>
+         <option value="1992">1992</option>
+         <option value="1991">1991</option>
+         <option value="1990">1990</option>
+         <option value="1989">1989</option>
+         <option value="1988">1988</option>
+         <option value="1987">1987</option>
+         <option value="1986">1986</option>
+         <option value="1985">1985</option>
+         <option value="1984">1984</option>
+         <option value="1983">1983</option>
+         <option value="1982">1982</option>
+         <option value="1981">1981</option>
+         <option value="1980">1980</option>
+         </select>               </div>
+                                 </div>                                
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Year of Completion</label>
+                                       <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+         <option value="" selected="selected"> Select Year </option>
+         <option value="2026">2026</option>
+         <option value="2025">2025</option>
+         <option value="2024">2024</option>
+         <option value="2023">2023</option>
+         <option value="2022">2022</option>
+         <option value="2021">2021</option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>
+         <option value="2017">2017</option>
+         <option value="2016">2016</option>
+         <option value="2015">2015</option>
+         <option value="2014">2014</option>
+         <option value="2013">2013</option>
+         <option value="2012">2012</option>
+         <option value="2011">2011</option>
+         <option value="2010">2010</option>
+         <option value="2009">2009</option>
+         <option value="2008">2008</option>
+         <option value="2007">2007</option>
+         <option value="2006">2006</option>
+         <option value="2005">2005</option>
+         <option value="2004">2004</option>
+         <option value="2003">2003</option>
+         <option value="2002">2002</option>
+         <option value="2001">2001</option>
+         <option value="2000">2000</option>
+         <option value="1999">1999</option>
+         <option value="1998">1998</option>
+         <option value="1997">1997</option>
+         <option value="1996">1996</option>
+         <option value="1995">1995</option>
+         <option value="1994">1994</option>
+         <option value="1993">1993</option>
+         <option value="1992">1992</option>
+         <option value="1991">1991</option>
+         <option value="1990">1990</option>
+         <option value="1989">1989</option>
+         <option value="1988">1988</option>
+         <option value="1987">1987</option>
+         <option value="1986">1986</option>
+         <option value="1985">1985</option>
+         <option value="1984">1984</option>
+         <option value="1983">1983</option>
+         <option value="1982">1982</option>
+         <option value="1981">1981</option>
+         <option value="1980">1980</option>
+         </select>               </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>College</label>
+                                       
+                                       
+                                       <select id="pg-college-name-box" name="pg-college-name-box" class="form-control  select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+         <option value=""> Select College </option>
+         <option value="Techno India Group">Techno India Group</option>
+         <option value="Rajalakshmi Engineering College">Rajalakshmi Engineering College</option>
+         <option value="K L University">K L University</option>
+         <option value="CVR College Of Engineering">CVR College Of Engineering</option>
+         <option value="BV Raju Institute of Technology">BV Raju Institute of Technology</option>
+         <option value="Vishnu Institute of Technology">Vishnu Institute of Technology</option>
+         <option value="SVS College Of Engineering">SVS College Of Engineering</option>
+         <option value="Sri Eswar College Of Engineeriing">Sri Eswar College Of Engineeriing</option>
+         <option value="Sri Shakthi Institute Of Engineering And Technology">Sri Shakthi Institute Of Engineering And Technology</option>
+         <option value="Chitkara University">Chitkara University</option>
+         <option value="D Y Patil Institute Of Engineering Management And Research">D Y Patil Institute Of Engineering Management And Research</option>
+         <option value="Keshav Memorial Institute Of Technology">Keshav Memorial Institute Of Technology</option>
+         <option value="GITAM University">GITAM University</option>
+         <option value="Sathyabama Unversity">Sathyabama Unversity</option>
+         <option value="Vellore Institute Of Technology">Vellore Institute Of Technology</option>
+         <option value="MVGR College Of Engineering">MVGR College Of Engineering</option>
+         <option value="RMK College Of Engneering">RMK College Of Engneering</option>
+         <option value="RMD College Of Engineering">RMD College Of Engineering</option>
+         <option value="RMK College Of Engneering And Tehnology">RMK College Of Engneering And Tehnology</option>
+         <option value="K.S.R College of Engineering">K.S.R College of Engineering</option>
+         <option value="K.S. Rangasamy College of Arts &amp; Science (Autonomous)">K.S. Rangasamy College of Arts &amp; Science (Autonomous)</option>
+         <option value="K.S.Rangasamy College of Technology ">K.S.Rangasamy College of Technology </option>
+         <option value="K.S.R College of Engineering And Technology">K.S.R College of Engineering And Technology</option>
+         <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+         <option value=" Hyderabad"> Hyderabad</option>
+         <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+         <option value=" Goa"> Goa</option>
+         <option value="Vidya Jyothi Institute of Technology">Vidya Jyothi Institute of Technology</option>
+         <option value="Knowledge Institute Of technology">Knowledge Institute Of technology</option>
+         <option value="MLR Institute Of Technology">MLR Institute Of Technology</option>
+         <option value="Vasi College of Engineering">Vasi College of Engineering</option>
+         <option value="Bannari Amman Institute of Technology">Bannari Amman Institute of Technology</option>
+         <option value="Chennai Institute Of Technology">Chennai Institute Of Technology</option>
+         <option value="Sri Ramakrishna Engineering College">Sri Ramakrishna Engineering College</option>
+         <option value="Sri Ramakrishna Institute Of Technology">Sri Ramakrishna Institute Of Technology</option>
+         <option value="Sri Krishna College of Engineering and Technology">Sri Krishna College of Engineering and Technology</option>
+         <option value="Presidency University">Presidency University</option>
+         <option value="NIT Surathkal">NIT Surathkal</option>
+         <option value="NIT Trichy">NIT Trichy</option>
+         <option value="IIT Madras">IIT Madras</option>
+         <option value="IISC Bangalore">IISC Bangalore</option>
+         <option value="others">others</option>
+         </select>           </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>College location</label>
+                                       <input type="text" id="pgClgLocation" name="pgClgLocation" value="" class="form-control" <%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgClgLocation-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-12 col-md-6"  style="display:none">
+                                    <div class="form-group">
+                                       <label>Enter College Name</label>
+                                       <input type="text" class="form-control" name="pgcollege" id="pgcollege" value="" placeholder="Enter college Name"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgcollege-error"></label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <h3 class="card-title">12th Details</h3>
+                              <div class="row">
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Qualification</label>
+                                       
+                                       <select id="pgqualification" name="pgqualification" class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value=""> Select Degree</option>
+         <option value="ME">ME</option>
+         <option value="M.TECH">M.TECH</option>
+         <option value="MSC">MSC</option>
+         <option value="M.com">M.com</option>
+         <option value="MCA">MCA</option>
+         <option value="MBA">MBA</option>
+         <option value="Others">Others</option>
+         </select>
+                                       <label class="error er-field" id="pgqualification-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>University</label>
+                                       <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true">
+                                       <option value=""> Select Branch </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Course Type</label>
+                                       <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true">
+                                       <option value=""> Select Branch </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Percentage</label>
+                                       <input type="number" id="pgp" name="pgp" placeholder="Eg: 85.77" min="0" max="100" step="0.01" value="" class=" form-control" fdprocessedid="rg9xiq">
+                                       <label class="error er-field" id="pgp-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Year of Start</label>
+                                       <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+         <option value="" selected="selected"> Select Year </option>
+         <option value="2026">2026</option>
+         <option value="2025">2025</option>
+         <option value="2024">2024</option>
+         <option value="2023">2023</option>
+         <option value="2022">2022</option>
+         <option value="2021">2021</option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>
+         <option value="2017">2017</option>
+         <option value="2016">2016</option>
+         <option value="2015">2015</option>
+         <option value="2014">2014</option>
+         <option value="2013">2013</option>
+         <option value="2012">2012</option>
+         <option value="2011">2011</option>
+         <option value="2010">2010</option>
+         <option value="2009">2009</option>
+         <option value="2008">2008</option>
+         <option value="2007">2007</option>
+         <option value="2006">2006</option>
+         <option value="2005">2005</option>
+         <option value="2004">2004</option>
+         <option value="2003">2003</option>
+         <option value="2002">2002</option>
+         <option value="2001">2001</option>
+         <option value="2000">2000</option>
+         <option value="1999">1999</option>
+         <option value="1998">1998</option>
+         <option value="1997">1997</option>
+         <option value="1996">1996</option>
+         <option value="1995">1995</option>
+         <option value="1994">1994</option>
+         <option value="1993">1993</option>
+         <option value="1992">1992</option>
+         <option value="1991">1991</option>
+         <option value="1990">1990</option>
+         <option value="1989">1989</option>
+         <option value="1988">1988</option>
+         <option value="1987">1987</option>
+         <option value="1986">1986</option>
+         <option value="1985">1985</option>
+         <option value="1984">1984</option>
+         <option value="1983">1983</option>
+         <option value="1982">1982</option>
+         <option value="1981">1981</option>
+         <option value="1980">1980</option>
+         </select>               </div>
+                                 </div>                                
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Year of Completion</label>
+                                       <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+         <option value="" selected="selected"> Select Year </option>
+         <option value="2026">2026</option>
+         <option value="2025">2025</option>
+         <option value="2024">2024</option>
+         <option value="2023">2023</option>
+         <option value="2022">2022</option>
+         <option value="2021">2021</option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>
+         <option value="2017">2017</option>
+         <option value="2016">2016</option>
+         <option value="2015">2015</option>
+         <option value="2014">2014</option>
+         <option value="2013">2013</option>
+         <option value="2012">2012</option>
+         <option value="2011">2011</option>
+         <option value="2010">2010</option>
+         <option value="2009">2009</option>
+         <option value="2008">2008</option>
+         <option value="2007">2007</option>
+         <option value="2006">2006</option>
+         <option value="2005">2005</option>
+         <option value="2004">2004</option>
+         <option value="2003">2003</option>
+         <option value="2002">2002</option>
+         <option value="2001">2001</option>
+         <option value="2000">2000</option>
+         <option value="1999">1999</option>
+         <option value="1998">1998</option>
+         <option value="1997">1997</option>
+         <option value="1996">1996</option>
+         <option value="1995">1995</option>
+         <option value="1994">1994</option>
+         <option value="1993">1993</option>
+         <option value="1992">1992</option>
+         <option value="1991">1991</option>
+         <option value="1990">1990</option>
+         <option value="1989">1989</option>
+         <option value="1988">1988</option>
+         <option value="1987">1987</option>
+         <option value="1986">1986</option>
+         <option value="1985">1985</option>
+         <option value="1984">1984</option>
+         <option value="1983">1983</option>
+         <option value="1982">1982</option>
+         <option value="1981">1981</option>
+         <option value="1980">1980</option>
+         </select>               </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>College</label>
+                                       
+                                       
+                                       <select id="pg-college-name-box" name="pg-college-name-box" class="form-control  select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+         <option value=""> Select College </option>
+         <option value="Techno India Group">Techno India Group</option>
+         <option value="Rajalakshmi Engineering College">Rajalakshmi Engineering College</option>
+         <option value="K L University">K L University</option>
+         <option value="CVR College Of Engineering">CVR College Of Engineering</option>
+         <option value="BV Raju Institute of Technology">BV Raju Institute of Technology</option>
+         <option value="Vishnu Institute of Technology">Vishnu Institute of Technology</option>
+         <option value="SVS College Of Engineering">SVS College Of Engineering</option>
+         <option value="Sri Eswar College Of Engineeriing">Sri Eswar College Of Engineeriing</option>
+         <option value="Sri Shakthi Institute Of Engineering And Technology">Sri Shakthi Institute Of Engineering And Technology</option>
+         <option value="Chitkara University">Chitkara University</option>
+         <option value="D Y Patil Institute Of Engineering Management And Research">D Y Patil Institute Of Engineering Management And Research</option>
+         <option value="Keshav Memorial Institute Of Technology">Keshav Memorial Institute Of Technology</option>
+         <option value="GITAM University">GITAM University</option>
+         <option value="Sathyabama Unversity">Sathyabama Unversity</option>
+         <option value="Vellore Institute Of Technology">Vellore Institute Of Technology</option>
+         <option value="MVGR College Of Engineering">MVGR College Of Engineering</option>
+         <option value="RMK College Of Engneering">RMK College Of Engneering</option>
+         <option value="RMD College Of Engineering">RMD College Of Engineering</option>
+         <option value="RMK College Of Engneering And Tehnology">RMK College Of Engneering And Tehnology</option>
+         <option value="K.S.R College of Engineering">K.S.R College of Engineering</option>
+         <option value="K.S. Rangasamy College of Arts &amp; Science (Autonomous)">K.S. Rangasamy College of Arts &amp; Science (Autonomous)</option>
+         <option value="K.S.Rangasamy College of Technology ">K.S.Rangasamy College of Technology </option>
+         <option value="K.S.R College of Engineering And Technology">K.S.R College of Engineering And Technology</option>
+         <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+         <option value=" Hyderabad"> Hyderabad</option>
+         <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+         <option value=" Goa"> Goa</option>
+         <option value="Vidya Jyothi Institute of Technology">Vidya Jyothi Institute of Technology</option>
+         <option value="Knowledge Institute Of technology">Knowledge Institute Of technology</option>
+         <option value="MLR Institute Of Technology">MLR Institute Of Technology</option>
+         <option value="Vasi College of Engineering">Vasi College of Engineering</option>
+         <option value="Bannari Amman Institute of Technology">Bannari Amman Institute of Technology</option>
+         <option value="Chennai Institute Of Technology">Chennai Institute Of Technology</option>
+         <option value="Sri Ramakrishna Engineering College">Sri Ramakrishna Engineering College</option>
+         <option value="Sri Ramakrishna Institute Of Technology">Sri Ramakrishna Institute Of Technology</option>
+         <option value="Sri Krishna College of Engineering and Technology">Sri Krishna College of Engineering and Technology</option>
+         <option value="Presidency University">Presidency University</option>
+         <option value="NIT Surathkal">NIT Surathkal</option>
+         <option value="NIT Trichy">NIT Trichy</option>
+         <option value="IIT Madras">IIT Madras</option>
+         <option value="IISC Bangalore">IISC Bangalore</option>
+         <option value="others">others</option>
+         </select>           </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>College location</label>
+                                       <input type="text" id="pgClgLocation" name="pgClgLocation" value="" class=" form-control" <%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgClgLocation-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-12 col-md-6"  style="display:none">
+                                    <div class="form-group">
+                                       <label>Enter College Name</label>
+                                       <input type="text" class="form-control" name="pgcollege" id="pgcollege" value="" placeholder="Enter college Name"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgcollege-error"></label>
+                                    </div>
+                                 </div>
+                              </div>
+                              <h3 class="card-title">Diploma Details</h3>
+                              <div class="row">
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Diploma</label>
+                                       
+                                       <select id="pgqualification" name="pgqualification" class="form-control " <%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value=""> Select Degree</option>
+         <option value="ME">ME</option>
+         <option value="M.TECH">M.TECH</option>
+         <option value="MSC">MSC</option>
+         <option value="M.com">M.com</option>
+         <option value="MCA">MCA</option>
+         <option value="MBA">MBA</option>
+         <option value="Others">Others</option>
+         </select>
+                                       <label class="error er-field" id="pgqualification-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>University</label>
+                                       <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <option value=""> Select Branch </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Course Type</label>
+                                       <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <option value=""> Select Branch </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Percentage</label>
+                                       <input type="number" id="pgp" name="pgp" placeholder="Eg: 85.77" min="0" max="100" step="0.01" value="" class=" form-control" fdprocessedid="rg9xiq"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgp-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Year of Start</label>
+                                       <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value="" selected="selected"> Select Year </option>
+         <option value="2026">2026</option>
+         <option value="2025">2025</option>
+         <option value="2024">2024</option>
+         <option value="2023">2023</option>
+         <option value="2022">2022</option>
+         <option value="2021">2021</option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>
+         <option value="2017">2017</option>
+         <option value="2016">2016</option>
+         <option value="2015">2015</option>
+         <option value="2014">2014</option>
+         <option value="2013">2013</option>
+         <option value="2012">2012</option>
+         <option value="2011">2011</option>
+         <option value="2010">2010</option>
+         <option value="2009">2009</option>
+         <option value="2008">2008</option>
+         <option value="2007">2007</option>
+         <option value="2006">2006</option>
+         <option value="2005">2005</option>
+         <option value="2004">2004</option>
+         <option value="2003">2003</option>
+         <option value="2002">2002</option>
+         <option value="2001">2001</option>
+         <option value="2000">2000</option>
+         <option value="1999">1999</option>
+         <option value="1998">1998</option>
+         <option value="1997">1997</option>
+         <option value="1996">1996</option>
+         <option value="1995">1995</option>
+         <option value="1994">1994</option>
+         <option value="1993">1993</option>
+         <option value="1992">1992</option>
+         <option value="1991">1991</option>
+         <option value="1990">1990</option>
+         <option value="1989">1989</option>
+         <option value="1988">1988</option>
+         <option value="1987">1987</option>
+         <option value="1986">1986</option>
+         <option value="1985">1985</option>
+         <option value="1984">1984</option>
+         <option value="1983">1983</option>
+         <option value="1982">1982</option>
+         <option value="1981">1981</option>
+         <option value="1980">1980</option>
+         </select>               </div>
+                                 </div>                                
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Year of Completion</label>
+                                       <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value="" selected="selected"> Select Year </option>
+         <option value="2026">2026</option>
+         <option value="2025">2025</option>
+         <option value="2024">2024</option>
+         <option value="2023">2023</option>
+         <option value="2022">2022</option>
+         <option value="2021">2021</option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>
+         <option value="2017">2017</option>
+         <option value="2016">2016</option>
+         <option value="2015">2015</option>
+         <option value="2014">2014</option>
+         <option value="2013">2013</option>
+         <option value="2012">2012</option>
+         <option value="2011">2011</option>
+         <option value="2010">2010</option>
+         <option value="2009">2009</option>
+         <option value="2008">2008</option>
+         <option value="2007">2007</option>
+         <option value="2006">2006</option>
+         <option value="2005">2005</option>
+         <option value="2004">2004</option>
+         <option value="2003">2003</option>
+         <option value="2002">2002</option>
+         <option value="2001">2001</option>
+         <option value="2000">2000</option>
+         <option value="1999">1999</option>
+         <option value="1998">1998</option>
+         <option value="1997">1997</option>
+         <option value="1996">1996</option>
+         <option value="1995">1995</option>
+         <option value="1994">1994</option>
+         <option value="1993">1993</option>
+         <option value="1992">1992</option>
+         <option value="1991">1991</option>
+         <option value="1990">1990</option>
+         <option value="1989">1989</option>
+         <option value="1988">1988</option>
+         <option value="1987">1987</option>
+         <option value="1986">1986</option>
+         <option value="1985">1985</option>
+         <option value="1984">1984</option>
+         <option value="1983">1983</option>
+         <option value="1982">1982</option>
+         <option value="1981">1981</option>
+         <option value="1980">1980</option>
+         </select>               </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>College</label>
+                                       
+                                       
+                                       <select id="pg-college-name-box" name="pg-college-name-box" class="form-control  select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value=""> Select College </option>
+         <option value="Techno India Group">Techno India Group</option>
+         <option value="Rajalakshmi Engineering College">Rajalakshmi Engineering College</option>
+         <option value="K L University">K L University</option>
+         <option value="CVR College Of Engineering">CVR College Of Engineering</option>
+         <option value="BV Raju Institute of Technology">BV Raju Institute of Technology</option>
+         <option value="Vishnu Institute of Technology">Vishnu Institute of Technology</option>
+         <option value="SVS College Of Engineering">SVS College Of Engineering</option>
+         <option value="Sri Eswar College Of Engineeriing">Sri Eswar College Of Engineeriing</option>
+         <option value="Sri Shakthi Institute Of Engineering And Technology">Sri Shakthi Institute Of Engineering And Technology</option>
+         <option value="Chitkara University">Chitkara University</option>
+         <option value="D Y Patil Institute Of Engineering Management And Research">D Y Patil Institute Of Engineering Management And Research</option>
+         <option value="Keshav Memorial Institute Of Technology">Keshav Memorial Institute Of Technology</option>
+         <option value="GITAM University">GITAM University</option>
+         <option value="Sathyabama Unversity">Sathyabama Unversity</option>
+         <option value="Vellore Institute Of Technology">Vellore Institute Of Technology</option>
+         <option value="MVGR College Of Engineering">MVGR College Of Engineering</option>
+         <option value="RMK College Of Engneering">RMK College Of Engneering</option>
+         <option value="RMD College Of Engineering">RMD College Of Engineering</option>
+         <option value="RMK College Of Engneering And Tehnology">RMK College Of Engneering And Tehnology</option>
+         <option value="K.S.R College of Engineering">K.S.R College of Engineering</option>
+         <option value="K.S. Rangasamy College of Arts &amp; Science (Autonomous)">K.S. Rangasamy College of Arts &amp; Science (Autonomous)</option>
+         <option value="K.S.Rangasamy College of Technology ">K.S.Rangasamy College of Technology </option>
+         <option value="K.S.R College of Engineering And Technology">K.S.R College of Engineering And Technology</option>
+         <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+         <option value=" Hyderabad"> Hyderabad</option>
+         <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+         <option value=" Goa"> Goa</option>
+         <option value="Vidya Jyothi Institute of Technology">Vidya Jyothi Institute of Technology</option>
+         <option value="Knowledge Institute Of technology">Knowledge Institute Of technology</option>
+         <option value="MLR Institute Of Technology">MLR Institute Of Technology</option>
+         <option value="Vasi College of Engineering">Vasi College of Engineering</option>
+         <option value="Bannari Amman Institute of Technology">Bannari Amman Institute of Technology</option>
+         <option value="Chennai Institute Of Technology">Chennai Institute Of Technology</option>
+         <option value="Sri Ramakrishna Engineering College">Sri Ramakrishna Engineering College</option>
+         <option value="Sri Ramakrishna Institute Of Technology">Sri Ramakrishna Institute Of Technology</option>
+         <option value="Sri Krishna College of Engineering and Technology">Sri Krishna College of Engineering and Technology</option>
+         <option value="Presidency University">Presidency University</option>
+         <option value="NIT Surathkal">NIT Surathkal</option>
+         <option value="NIT Trichy">NIT Trichy</option>
+         <option value="IIT Madras">IIT Madras</option>
+         <option value="IISC Bangalore">IISC Bangalore</option>
+         <option value="others">others</option>
+         </select>           </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>College location</label>
+                                       <input type="text" id="pgClgLocation" name="pgClgLocation" value="" class=" form-control" fdprocessedid="v5nqb"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgClgLocation-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-12 col-md-6"  style="display:none">
+                                    <div class="form-group">
+                                       <label>Enter College Name</label>
+                                       <input type="text" class="form-control" name="pgcollege" id="pgcollege" value="" placeholder="Enter college Name"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgcollege-error"></label>
+                                    </div>
+                                 </div>
+                              </div>
+                                 <h3 class="card-title">UG Details</h3>
+                                 <div class="row">
+                                    <div class="mb-3 col-md-3">
+                                       <div class="form-group">
+                                          <label>Qualification</label>
+                                          
+                                          <select id="ugqualification" name="ugqualification" class="form-control " fdprocessedid="vh82jd"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                             <option value=""> Select Degree</option>
+                                             <option value="BE">BE</option>
+                                             <option value="B.Tech">B.Tech</option>
+                                             <option value="B.Sc">B.Sc</option>
+                                             <option value="BCA">BCA</option>
+                                             <option value="B.com">B.com</option>
+                                             <option value="BA">BA</option>
+                                             <option value="BBA">BBA</option>
+                                             <option value="Others">Others</option>
+                                             </select>
+                                          <label class="error er-field" id="pgqualification-error"></label>
+                                       </div>
+                                    </div>
+                                    <div class="mb-3 col-md-3">
+                                       <div class="form-group">
+                                          <label>University</label>
+                                          <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <option value=""> Select Branch </option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                    <div class="mb-3 col-md-3">
+                                       <div class="form-group">
+                                          <label>Course Type</label>
+                                          <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <option value=""> Select Branch </option>
+                                          </select>
+                                       </div>
+                                    </div>
+                                    <div class="mb-3 col-md-3">
+                                       <div class="form-group">
+                                          <label>Percentage</label>
+                                          <input type="number" id="pgp" name="pgp" placeholder="Eg: 85.77" min="0" max="100" step="0.01" value="" class=" form-control" fdprocessedid="rg9xiq"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <label class="error er-field" id="pgp-error"></label>
+                                       </div>
+                                    </div>
+                                    <div class="mb-3 col-md-3">
+                                       <div class="form-group">
+                                          <label>Year of Start</label>
+                                          <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+            <option value="" selected="selected"> Select Year </option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            <option value="2004">2004</option>
+            <option value="2003">2003</option>
+            <option value="2002">2002</option>
+            <option value="2001">2001</option>
+            <option value="2000">2000</option>
+            <option value="1999">1999</option>
+            <option value="1998">1998</option>
+            <option value="1997">1997</option>
+            <option value="1996">1996</option>
+            <option value="1995">1995</option>
+            <option value="1994">1994</option>
+            <option value="1993">1993</option>
+            <option value="1992">1992</option>
+            <option value="1991">1991</option>
+            <option value="1990">1990</option>
+            <option value="1989">1989</option>
+            <option value="1988">1988</option>
+            <option value="1987">1987</option>
+            <option value="1986">1986</option>
+            <option value="1985">1985</option>
+            <option value="1984">1984</option>
+            <option value="1983">1983</option>
+            <option value="1982">1982</option>
+            <option value="1981">1981</option>
+            <option value="1980">1980</option>
+            </select>               </div>
+                                    </div>                                
+                                    <div class="mb-3 col-md-3">
+                                       <div class="form-group">
+                                          <label>Year of Completion</label>
+                                          <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+            <option value="" selected="selected"> Select Year </option>
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            <option value="2004">2004</option>
+            <option value="2003">2003</option>
+            <option value="2002">2002</option>
+            <option value="2001">2001</option>
+            <option value="2000">2000</option>
+            <option value="1999">1999</option>
+            <option value="1998">1998</option>
+            <option value="1997">1997</option>
+            <option value="1996">1996</option>
+            <option value="1995">1995</option>
+            <option value="1994">1994</option>
+            <option value="1993">1993</option>
+            <option value="1992">1992</option>
+            <option value="1991">1991</option>
+            <option value="1990">1990</option>
+            <option value="1989">1989</option>
+            <option value="1988">1988</option>
+            <option value="1987">1987</option>
+            <option value="1986">1986</option>
+            <option value="1985">1985</option>
+            <option value="1984">1984</option>
+            <option value="1983">1983</option>
+            <option value="1982">1982</option>
+            <option value="1981">1981</option>
+            <option value="1980">1980</option>
+            </select>               </div>
+                                    </div>
+                                    <div class="mb-3 col-md-3">
+                                       <div class="form-group">
+                                          <label>College</label>
+                                          
+                                          
+                                          <select id="pg-college-name-box" name="pg-college-name-box" class="form-control  select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+            <option value=""> Select College </option>
+            <option value="Techno India Group">Techno India Group</option>
+            <option value="Rajalakshmi Engineering College">Rajalakshmi Engineering College</option>
+            <option value="K L University">K L University</option>
+            <option value="CVR College Of Engineering">CVR College Of Engineering</option>
+            <option value="BV Raju Institute of Technology">BV Raju Institute of Technology</option>
+            <option value="Vishnu Institute of Technology">Vishnu Institute of Technology</option>
+            <option value="SVS College Of Engineering">SVS College Of Engineering</option>
+            <option value="Sri Eswar College Of Engineeriing">Sri Eswar College Of Engineeriing</option>
+            <option value="Sri Shakthi Institute Of Engineering And Technology">Sri Shakthi Institute Of Engineering And Technology</option>
+            <option value="Chitkara University">Chitkara University</option>
+            <option value="D Y Patil Institute Of Engineering Management And Research">D Y Patil Institute Of Engineering Management And Research</option>
+            <option value="Keshav Memorial Institute Of Technology">Keshav Memorial Institute Of Technology</option>
+            <option value="GITAM University">GITAM University</option>
+            <option value="Sathyabama Unversity">Sathyabama Unversity</option>
+            <option value="Vellore Institute Of Technology">Vellore Institute Of Technology</option>
+            <option value="MVGR College Of Engineering">MVGR College Of Engineering</option>
+            <option value="RMK College Of Engneering">RMK College Of Engneering</option>
+            <option value="RMD College Of Engineering">RMD College Of Engineering</option>
+            <option value="RMK College Of Engneering And Tehnology">RMK College Of Engneering And Tehnology</option>
+            <option value="K.S.R College of Engineering">K.S.R College of Engineering</option>
+            <option value="K.S. Rangasamy College of Arts &amp; Science (Autonomous)">K.S. Rangasamy College of Arts &amp; Science (Autonomous)</option>
+            <option value="K.S.Rangasamy College of Technology ">K.S.Rangasamy College of Technology </option>
+            <option value="K.S.R College of Engineering And Technology">K.S.R College of Engineering And Technology</option>
+            <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+            <option value=" Hyderabad"> Hyderabad</option>
+            <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+            <option value=" Goa"> Goa</option>
+            <option value="Vidya Jyothi Institute of Technology">Vidya Jyothi Institute of Technology</option>
+            <option value="Knowledge Institute Of technology">Knowledge Institute Of technology</option>
+            <option value="MLR Institute Of Technology">MLR Institute Of Technology</option>
+            <option value="Vasi College of Engineering">Vasi College of Engineering</option>
+            <option value="Bannari Amman Institute of Technology">Bannari Amman Institute of Technology</option>
+            <option value="Chennai Institute Of Technology">Chennai Institute Of Technology</option>
+            <option value="Sri Ramakrishna Engineering College">Sri Ramakrishna Engineering College</option>
+            <option value="Sri Ramakrishna Institute Of Technology">Sri Ramakrishna Institute Of Technology</option>
+            <option value="Sri Krishna College of Engineering and Technology">Sri Krishna College of Engineering and Technology</option>
+            <option value="Presidency University">Presidency University</option>
+            <option value="NIT Surathkal">NIT Surathkal</option>
+            <option value="NIT Trichy">NIT Trichy</option>
+            <option value="IIT Madras">IIT Madras</option>
+            <option value="IISC Bangalore">IISC Bangalore</option>
+            <option value="others">others</option>
+            </select>           </div>
+                                    </div>
+                                    <div class="mb-3 col-md-3">
+                                       <div class="form-group">
+                                          <label>College location</label>
+                                          <input type="text" id="pgClgLocation" name="pgClgLocation" value="" class=" form-control" <%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <label class="error er-field" id="pgClgLocation-error"></label>
+                                       </div>
+                                    </div>
+                                    <div class="col-sm-12 col-md-6"  style="display:none">
+                                       <div class="form-group">
+                                          <label>Enter College Name</label>
+                                          <input type="text" class="form-control" name="pgcollege" id="pgcollege" value="" placeholder="Enter college Name"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <label class="error er-field" id="pgcollege-error"></label>
+                                       </div>
+                                    </div>
+                                 </div>
+                              <h3 class="card-title">PG Details</h3>
+                              <div class="row">
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Qualification</label>
+                                       
+                                       <select id="pgqualification" name="pgqualification" class="form-control " fdprocessedid="sz3h4"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value=""> Select Degree</option>
+         <option value="ME">ME</option>
+         <option value="M.TECH">M.TECH</option>
+         <option value="MSC">MSC</option>
+         <option value="M.com">M.com</option>
+         <option value="MCA">MCA</option>
+         <option value="MBA">MBA</option>
+         <option value="Others">Others</option>
+         </select>
+                                       <label class="error er-field" id="pgqualification-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>University</label>
+                                       <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <option value=""> Select Branch </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Course Type</label>
+                                       <select id="pgbranch" name="pgbranch" value="" class="form-control  select2-hidden-accessible" title="select qualification to get branch" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <option value=""> Select Branch </option>
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Percentage</label>
+                                       <input type="number" id="pgp" name="pgp" placeholder="Eg: 85.77" min="0" max="100" step="0.01" value="" class=" form-control" fdprocessedid="rg9xiq"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgp-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Year of Start</label>
+                                       <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value="" selected="selected"> Select Year </option>
+         <option value="2026">2026</option>
+         <option value="2025">2025</option>
+         <option value="2024">2024</option>
+         <option value="2023">2023</option>
+         <option value="2022">2022</option>
+         <option value="2021">2021</option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>
+         <option value="2017">2017</option>
+         <option value="2016">2016</option>
+         <option value="2015">2015</option>
+         <option value="2014">2014</option>
+         <option value="2013">2013</option>
+         <option value="2012">2012</option>
+         <option value="2011">2011</option>
+         <option value="2010">2010</option>
+         <option value="2009">2009</option>
+         <option value="2008">2008</option>
+         <option value="2007">2007</option>
+         <option value="2006">2006</option>
+         <option value="2005">2005</option>
+         <option value="2004">2004</option>
+         <option value="2003">2003</option>
+         <option value="2002">2002</option>
+         <option value="2001">2001</option>
+         <option value="2000">2000</option>
+         <option value="1999">1999</option>
+         <option value="1998">1998</option>
+         <option value="1997">1997</option>
+         <option value="1996">1996</option>
+         <option value="1995">1995</option>
+         <option value="1994">1994</option>
+         <option value="1993">1993</option>
+         <option value="1992">1992</option>
+         <option value="1991">1991</option>
+         <option value="1990">1990</option>
+         <option value="1989">1989</option>
+         <option value="1988">1988</option>
+         <option value="1987">1987</option>
+         <option value="1986">1986</option>
+         <option value="1985">1985</option>
+         <option value="1984">1984</option>
+         <option value="1983">1983</option>
+         <option value="1982">1982</option>
+         <option value="1981">1981</option>
+         <option value="1980">1980</option>
+         </select>               </div>
+                                 </div>                                
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Year of Completion</label>
+                                       <select id="pgy" name="pgy" class="form-control select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value="" selected="selected"> Select Year </option>
+         <option value="2026">2026</option>
+         <option value="2025">2025</option>
+         <option value="2024">2024</option>
+         <option value="2023">2023</option>
+         <option value="2022">2022</option>
+         <option value="2021">2021</option>
+         <option value="2020">2020</option>
+         <option value="2019">2019</option>
+         <option value="2018">2018</option>
+         <option value="2017">2017</option>
+         <option value="2016">2016</option>
+         <option value="2015">2015</option>
+         <option value="2014">2014</option>
+         <option value="2013">2013</option>
+         <option value="2012">2012</option>
+         <option value="2011">2011</option>
+         <option value="2010">2010</option>
+         <option value="2009">2009</option>
+         <option value="2008">2008</option>
+         <option value="2007">2007</option>
+         <option value="2006">2006</option>
+         <option value="2005">2005</option>
+         <option value="2004">2004</option>
+         <option value="2003">2003</option>
+         <option value="2002">2002</option>
+         <option value="2001">2001</option>
+         <option value="2000">2000</option>
+         <option value="1999">1999</option>
+         <option value="1998">1998</option>
+         <option value="1997">1997</option>
+         <option value="1996">1996</option>
+         <option value="1995">1995</option>
+         <option value="1994">1994</option>
+         <option value="1993">1993</option>
+         <option value="1992">1992</option>
+         <option value="1991">1991</option>
+         <option value="1990">1990</option>
+         <option value="1989">1989</option>
+         <option value="1988">1988</option>
+         <option value="1987">1987</option>
+         <option value="1986">1986</option>
+         <option value="1985">1985</option>
+         <option value="1984">1984</option>
+         <option value="1983">1983</option>
+         <option value="1982">1982</option>
+         <option value="1981">1981</option>
+         <option value="1980">1980</option>
+         </select>               </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>College</label>
+                                       
+                                       
+                                       <select id="pg-college-name-box" name="pg-college-name-box" class="form-control  select2-hidden-accessible" tabindex="-1" aria-hidden="true"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+         <option value=""> Select College </option>
+         <option value="Techno India Group">Techno India Group</option>
+         <option value="Rajalakshmi Engineering College">Rajalakshmi Engineering College</option>
+         <option value="K L University">K L University</option>
+         <option value="CVR College Of Engineering">CVR College Of Engineering</option>
+         <option value="BV Raju Institute of Technology">BV Raju Institute of Technology</option>
+         <option value="Vishnu Institute of Technology">Vishnu Institute of Technology</option>
+         <option value="SVS College Of Engineering">SVS College Of Engineering</option>
+         <option value="Sri Eswar College Of Engineeriing">Sri Eswar College Of Engineeriing</option>
+         <option value="Sri Shakthi Institute Of Engineering And Technology">Sri Shakthi Institute Of Engineering And Technology</option>
+         <option value="Chitkara University">Chitkara University</option>
+         <option value="D Y Patil Institute Of Engineering Management And Research">D Y Patil Institute Of Engineering Management And Research</option>
+         <option value="Keshav Memorial Institute Of Technology">Keshav Memorial Institute Of Technology</option>
+         <option value="GITAM University">GITAM University</option>
+         <option value="Sathyabama Unversity">Sathyabama Unversity</option>
+         <option value="Vellore Institute Of Technology">Vellore Institute Of Technology</option>
+         <option value="MVGR College Of Engineering">MVGR College Of Engineering</option>
+         <option value="RMK College Of Engneering">RMK College Of Engneering</option>
+         <option value="RMD College Of Engineering">RMD College Of Engineering</option>
+         <option value="RMK College Of Engneering And Tehnology">RMK College Of Engneering And Tehnology</option>
+         <option value="K.S.R College of Engineering">K.S.R College of Engineering</option>
+         <option value="K.S. Rangasamy College of Arts &amp; Science (Autonomous)">K.S. Rangasamy College of Arts &amp; Science (Autonomous)</option>
+         <option value="K.S.Rangasamy College of Technology ">K.S.Rangasamy College of Technology </option>
+         <option value="K.S.R College of Engineering And Technology">K.S.R College of Engineering And Technology</option>
+         <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+         <option value=" Hyderabad"> Hyderabad</option>
+         <option value="Birla Institute Of Technology Science">Birla Institute Of Technology Science</option>
+         <option value=" Goa"> Goa</option>
+         <option value="Vidya Jyothi Institute of Technology">Vidya Jyothi Institute of Technology</option>
+         <option value="Knowledge Institute Of technology">Knowledge Institute Of technology</option>
+         <option value="MLR Institute Of Technology">MLR Institute Of Technology</option>
+         <option value="Vasi College of Engineering">Vasi College of Engineering</option>
+         <option value="Bannari Amman Institute of Technology">Bannari Amman Institute of Technology</option>
+         <option value="Chennai Institute Of Technology">Chennai Institute Of Technology</option>
+         <option value="Sri Ramakrishna Engineering College">Sri Ramakrishna Engineering College</option>
+         <option value="Sri Ramakrishna Institute Of Technology">Sri Ramakrishna Institute Of Technology</option>
+         <option value="Sri Krishna College of Engineering and Technology">Sri Krishna College of Engineering and Technology</option>
+         <option value="Presidency University">Presidency University</option>
+         <option value="NIT Surathkal">NIT Surathkal</option>
+         <option value="NIT Trichy">NIT Trichy</option>
+         <option value="IIT Madras">IIT Madras</option>
+         <option value="IISC Bangalore">IISC Bangalore</option>
+         <option value="others">others</option>
+         </select>           </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>College location</label>
+                                       <input type="text" id="pgClgLocation" name="pgClgLocation" value="" class=" form-control" fdprocessedid="v5nqb"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgClgLocation-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="col-sm-12 col-md-6"  style="display:none">
+                                    <div class="form-group">
+                                       <label>Enter College Name</label>
+                                       <input type="text" class="form-control" name="pgcollege" id="pgcollege" value="" placeholder="Enter college Name"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="pgcollege-error"></label>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                           <div class="card-header"> <h5>Exprience Details</h5>
+                           </div> 
+                           <div class="card-body"> 
+                              <div class="row">
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Job Sekeer Type</label>
+                                       <select id="job_seeker_type" name="job_seeker_type"class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <option value=""> Select Type</option>
+                                          <option value="Fresher">Fresher</option>
+                                          <option value="Exprienced">Exprienced</option>
+                                         
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label for="tins">Company /Project Name</label>
+                                       <input type="text" id="tins" name="tins" value="" class="form-control " fdprocessedid="nfnoq"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="tins-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Job / Project Summary </label>
+                                       <input type="text" id="tlocation" name="tlocation" value="" class="form-control " fdprocessedid="oqsd1c"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>            
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Position</label>
+                                       <input type="text" id="coursename" name="coursename" value="" class="form-control " fdprocessedid="rwruc"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Starting Date</label>                                 
+                                       <input type="date" id="sdate" name="sdate" placeholder="dd-mm-yyyy"  data-provide="datepicker" data-date-end-date="0d" class="form-control" style="cursor: pointer;"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>                                 
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>End Date</label>                                 
+                                       <input type="date" id="edate" name="edate" placeholder="dd-mm-yyyy"  data-provide="datepicker" data-date-end-date="0d" class="form-control" style="cursor: pointer;"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Exprience (In Years) </label>
+                                       <input type="text" id="tlocation" name="tlocation" value="" class="form-control " fdprocessedid="oqsd1c"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>   
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                           <div class="card-header"> <h5>Job Specification</h5>
+                           </div> 
+                           <div class="card-body"> 
+                              <div class="row">
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Job Branch</label>
+                                       <select id="job_type" name="job__type"class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <option value=""> Select Type</option>
+                                          <option value="Fresher">IT</option>
+                                          <option value="Exprienced">Non IT</option>
+                                         
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label for="tins">Job Locations</label>
+                                       <input type="text" id="tins" name="tins" value="" class="form-control " fdprocessedid="nfnoq"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                       <label class="error er-field" id="tins-error"></label>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Industry </label>
+                                       <input type="text" id="tlocation" name="tlocation" value="" class="form-control " fdprocessedid="oqsd1c"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>            
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Job Role</label>
+                                       <input type="text" id="coursename" name="coursename" value="" class="form-control " fdprocessedid="rwruc"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Job Department</label>
+                                       <select id="job_type" name="job__type"class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <option value=""> Select Department</option>
+                                          <option value="Fresher">IT</option>
+                                          <option value="Exprienced">Non IT</option>
+                                         
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Preferred Designation</label>
+                                       <input type="text" id="coursename" name="coursename" value="" class="form-control " fdprocessedid="rwruc"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Preferred CTC</label>
+                                       <input type="text" id="coursename" name="coursename" value="" class="form-control " fdprocessedid="rwruc"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Present CTC</label>
+                                       <input type="text" id="coursename" name="coursename" value="" class="form-control " fdprocessedid="rwruc"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Job Type</label>
+                                       <select id="job_type" name="job__type"class="form-control"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                          <option value=""> Select Type</option>
+                                          <option value="Fresher">Frehser</option>
+                                          <option value="Full Time">Full Time</option>
+                                          <option value="Fresher">Internship</option>
+                                          <option value="Full Time">Part Time</option>
+                                          <option value="Fresher">Temporary</option>
+                                          <option value="Full Time">Contract</option>
+                                         
+                                       </select>
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Joining Date</label>                                 
+                                       <input type="date" id="join_date" name="join_date" placeholder="dd-mm-yyyy"  data-provide="datepicker" data-date-end-date="0d" class="form-control" style="cursor: pointer;"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>                                  
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                           <div class="card-header"> <h5>Other Information</h5>
+                           </div> 
+                           <div class="card-body"> 
+                              
+                              <div class="row">
+                                 <div class="mb-3 col-md-3">
+                                    <label for="photo" class="form-label">Upload Your Photo</label>
+                                    <input class="form-control" type="file" name="photo"id="photo"  <%= ( ViewUser === 'view') ? 'readonly disabled' :'' %> >
+                                     <img src="uploads/<%- typeof locals != 'undefined' ? locals.upload_photo : '' %>">    
+                                     <input type="text" hidden value="<%- typeof locals != 'undefined' ? locals.upload_photo : '' %>" name="photo_file_name" >                             
+                                 </div>
+                                  <div class="mb-3 col-md-3">
+                                    <label for="resume" class="form-label">Upload Your Resume</label>
+                                    <input class="form-control" type="file" id="resume"name="resume" accept="application/pdf"<%= ( ViewUser === 'view') ? 'readonly disabled' :'' %> >
+                                    <input type="text" hidden value="<%- typeof locals != 'undefined' ? locals.resume_file : '' %>" name="resume_file_name" >                             
+                                     
+                                    <p>
+                                       <%- typeof locals != 'undefined' ? locals.resume_file : '' %>
+                                       <% if (ViewUser === 'view'){%>
+                                          <a class="btn m-1 btn-info" href="/download_resume?id=<%= locals.id %>"  type="">Downlaod</a>
+                                          <%}%> 
+                                    </p></div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Skills</label>
+                                       <input  type="text" id="skillset" name="skillset" value="" class="form-control" placeholder="Add Upto 5 Skills"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Languages Known</label>
+                                       <input placeholder="Add Upto 4 Languages"type="text" id="freeText4" name="freeText4" value="" class="form-control" fdprocessedid="o4eps"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="card shadow mb-4">
+                           <div class="card-header"> <h5>Reference</h5>
+                           </div> 
+                           <div class="card-body"> 
+                              <div class="row">
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Refree Name</label>
+                                       <input  type="text" id="skillset" name="skillset" value="" class="form-control" placeholder="Add Upto 5 Skills"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Refree Contact Number</label>
+                                       <input  type="tel" id="skillset" name="skillset" value="" class="form-control" placeholder="Add Upto 5 Skills"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Refree Email ID</label>
+                                       <input  type="email" id="skillset" name="skillset" value="" class="form-control" placeholder="Add Upto 5 Skills"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                                 <div class="mb-3 col-md-3">
+                                    <div class="form-group">
+                                       <label>Refree phone pe/Gpay/Paytm/other UPI ID</label>
+                                       <input  type="text" id="skillset" name="skillset" value="" class="form-control" placeholder="Add Upto 5 Skills"<%= ( ViewUser === 'view') ? 'readonly' :'' %> >
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="row">
+                                 <div class="col-md-12 mt-2 text-center">
+                                    <button type="submit" class="btn btn-primary me-2">Save</button>
+                                    <button type="reset" class="btn btn-outline-secondary ">Reset</button>
+                                 </div>
+                              </div>
+                        
+                        </div>
+               
+                     </form>
+               </div>
+          </div>
+         </div>
+      </div>
+       
+          <!-- content-wrapper ends -->
+          <!-- partial:partials/_footer.html -->
+          <%- include('includes/footer.ejs') %>
+          <!-- partial -->
+    </div>
+</body>
+  
+                            
+                           

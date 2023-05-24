@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Upreak -Chatbot</title>
+  <link rel="shortcut icon" href="./images/main_logo.png" type="image/x-icon" height="100%" width="100%">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+  <link rel="stylesheet" href="css/animate.css">
+  <link rel="stylesheet" href="css/owl.carousel.min.css">
+  <link rel="stylesheet" href="css/owl.theme.default.min.css">
+  <link rel="stylesheet" href="css/magnific-popup.css">
+  <link rel="stylesheet" href="css/aos.css">
+  <link rel="stylesheet" href="css/ionicons.min.css">
+  <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+  <link rel="stylesheet" href="css/jquery.timepicker.css">
+  <link rel="stylesheet" href="css/flaticon.css">
+  <link rel="stylesheet" href="css/icomoon.css">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    p {
+      color: #000;
+    }
+    .hero-wrap {
+      position: relative;
+      background-position: center;
+      background-size: cover;
+      padding-top: 50px;
+      padding-bottom: 100px;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    .pt-5 {
+      padding-top: 5rem;
+    }
+    .text-justify {
+      text-align: justify;
+    }
+    .text-dark {
+      color: #000 !important;
+    }
+    .p-3 {
+      padding: 1rem !important;
+    }
+    .bg-white {
+      background-color: #fff !important;
+    }
+    .rounded {
+      border-radius: 0.25rem !important;
+    }
+    .w-100 {
+      width: 100% !important;
+    }
+    #chatbox {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #212A3E;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow-y: scroll;
+  height: 500px; /* Adjust the height as needed */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #d3e3fc #212A3E; /* Firefox */
+}
+
+#chatbox::-webkit-scrollbar {
+  width: 6px; /* Safari and Chrome */
+}
+
+#chatbox::-webkit-scrollbar-track {
+  background: #212A3E; /* Chrome and Safari */
+}
+
+#chatbox::-webkit-scrollbar-thumb {
+  background-color: #d3e3fc; /* Chrome and Safari */
+}
+
+    .bubble-container {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 10px;
+    }
+    .bubble-container.right {
+      justify-content: flex-end;
+    }
+    .bubble {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+    .bubble::before {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      padding: 10px;
+      max-width: 70%;
+      word-wrap: break-word;
+    }
+    .bubble.question {
+      background-color: #d3e3fc;
+      margin-right: 30px;
+    }
+    .bubble.question::before {
+      background-color: #d3e3fc;
+      margin-right: 30px;
+      font-weight: 900;
+      color: #000;
+    }
+    .bubble.response {
+      margin-left: auto;
+      background-color: #c5f6c5;
+    }
+    .question:before {
+      font-weight: 900;
+      color: #000;
+    }
+    .response:before {
+      font-weight: bold;
+    }
+    form {
+      display: flex;
+      margin-top: 10px;
+    }
+    input[type="text"] {
+      flex-grow: 1;
+      padding: 10px;
+      padding-right: 270px;
+      border-radius: 20px;
+      border: none;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+    button[type="submit"] {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      width: auto;
+      margin-left: 5px;
+      font-size: 25px;
+    }
+    button[type="submit"]:hover {
+      background-color: green;
+      color: #000;
+    }
+    button[type="submit"]:before {
+      content: "\f1d8";
+      font-family: FontAwesome;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hero-wrap {
+        padding-top: 50px;
+        padding-bottom: 50px;
+      }
+      .pt-5 {
+        padding-top: 2rem;
+      }
+      .text-justify {
+        text-align: left;
+      }
+      .p-3 {
+        padding: 0.5rem !important;
+      }
+      #chatbox {
+        height: 300px;
+      }
+      .bubble {
+        max-width: 80%;
+      }
+    }
+
+    /* Styling Updates */
+    .hero-wrap.img {
+      background-image: url(images/bg_1.jpg);
+    }
+
+    .hero-wrap .container h2 {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bubble-container.right .bubble.response {
+      background-color: #f1f1f1;
+    }
+
+    .bubble-container.right .bubble.response::before {
+      background-color: #f1f1f1;
+    }
+
+    .bubble-container.right .bubble.question {
+      margin-left: 30px;
+      margin-right: 0;
+    }
+
+    .bubble-container.right .bubble.question::before {
+      margin-left: 30px;
+      margin-right: 0;
+      width: 100%;
+      padding-right: 270px
+    }
+
+    .chat-container {
+      margin-top: 20px;
+    }
+
+    .chatbot-bubble-container,
+    .user-bubble-container {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    /* .chatbot-bubble-container .chatbot-bubble, */
+    /* .user-bubble-container .user-input-container { */
+      /* background-color: #000; */
+      /* padding-right: 170px; */
+    /* } */
+
+    .chatbot-bubble-container .chatbot-bubble p,
+    .user-bubble-container .user-input-container input[type="text"] {
+      background-color: #d3e3fc;
+      /* margin-right: 30px; */
+      flex-grow: 1;
+      padding: 10px;
+      border-radius: 5px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: showBubble 0.3s ease forwards;
+
+    }
+
+    .user-bubble-container .user-input-container input[type="text"] {
+      border: 1px solid #ccc;
+    }
+
+    .user-bubble-container .user-input-container button[type="submit"] {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      width: 80px;
+      /* margin-left: 5px; */
+      font-size: 25px;
+    }
+
+    .user-bubble-container .user-input-container button[type="submit"]:hover {
+      background-color: green;
+      color: #000;
+    }
+
+    .user-bubble-container .user-input-container button[type="submit"]:before {
+      content: "\f1d8";
+      font-family: FontAwesome;
+    }
+
+    .user-bubble-container .user-input-container input[type="text"] {
+      padding-right: 11em;
+    }
+
+
+        /* Animation */
+        .bubble {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: showBubble 0.3s ease forwards;
+    }
+
+    @keyframes showBubble {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .container {
+    display: flex;
+  }
+
+  .input-field {
+    flex: 1;
+  }
+
+  .button {
+    width: 100px; /* Adjust the width as per your preference */
+  }
+  </style>
+</head>
+<body>
+  <%- include('includes/main_nav.ejs') %>
+  <div class="hero-wrap img ">
+    <div class="" style="margin: 5%;">
+      <div style="text-align: center;">
+        <h2 class="" style="font-weight: 700;"></h2>
+      </div>
+      <div class="row p-5 bg-white rounded p-lg-4" style="margin-top: 5%;">
+        <div class="col-lg-7">
+          <a class="navbar-brand brand-logo-mini" href="/dash_index">
+            <img class="w-100" src="images/main_logo.jpg" alt="logo" />
+          </a>
+          <p class="text-justify text-dark p-3" style="font-weight: 700; line-height: 2.0;">
+            Welcome to Upreak, the recruitment partner that empowers you to earn big while helping others find their dream jobs! If you're interested in becoming a part of our team and enjoying the benefits of being a recruitment partner, fill out the form below and kickstart your journey towards unlimited earning potential.
+          </p>
+        </div>
+        <div class="col-lg-5">
+          <div id="chatbox">
+            <h3 class="text-center text-white text-uppercase">Welcome To Chatbot</h3>
+            <div class="bubble-container">
+              <div class="bubble" style="background-color: #d3e3fc; margin-right: 30px; border-radius: 10px; padding: 10px; word-wrap: break-word;">
+                <p style="margin: 0; color: #000;">Welcome Sir</p>
+              </div>
+            </div>
+            
+            <% for (var i = 0; i < chatHistory.length; i++) { %>
+              <div class="bubble-container <%= chatHistory[i].type %>">
+                <div class="bubble <%= chatHistory[i].type %>">
+                  <p><%= chatHistory[i].text %></p>
+                </div>
+              </div>
+            <% } %>
+            <% if (question) { %>
+              <div class="chat-container">
+                <div class="chatbot-bubble-container">
+                  <div class="chatbot-bubble">
+                    <p><%= question.question %></p>
+                  </div>
+                </div>
+                <div class="user-bubble-container">
+                  <form action="/save_chatbot" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="question_id" value="<%= question.id %>">
+                    <input type="hidden" name="previous_question" value="<%= chatHistory.length > 0 && chatHistory[chatHistory.length - 1].type === 'question' ? chatHistory[chatHistory.length - 1].text : '' %>">
+                    <input type="hidden" name="previous_response" value="<%= chatHistory.length > 0 && chatHistory[chatHistory.length - 1].type === 'response' ? chatHistory[chatHistory.length - 1].text : '' %>">
+                    <input type="hidden" name="chat_history" value="<%= JSON.stringify(chatHistory) %>">
+                    <input type="hidden" name="user_resp" value="<%= JSON.stringify(user_resp) %>">
+                    <div class="user-input-container">
+                      <input class="w-90 rounded p-1" style="background-color: #d3e3fc;color: #000;border: none;cursor: pointer;font-size: 18px;" type="<%= question.type %>" name="response" placeholder="Type your response...">
+                      <button type="submit" class="btn"></button>
+                    </div>
+                   
+                  </form>
+                </div>
+              </div>
+            <% } else { %>
+              <div class="chat-container">
+                <div class="chatbot-bubble-container">
+                  <div class="chatbot-bubble">
+                    <p>Chatbot session has ended.</p>
+                  </div>
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%- include('includes/main_footer.ejs') %>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+$(document).ready(function() {
+  // Automatically scroll chatbox to bottom
+  var chatbox = document.getElementById("chatbox");
+  chatbox.scrollTop = chatbox.scrollHeight;
+});
+
+  </script>
+  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var chatbox = document.getElementById("chatbox");
+      chatbox.scrollTop = chatbox.scrollHeight;
+
+      // Animate bubbles
+      var bubbles = document.querySelectorAll(".bubble");
+      for (var i = 0; i < bubbles.length; i++) {
+        animateBubble(bubbles[i]);
+      }
+
+      function animateBubble(bubble) {
+        bubble.style.opacity = "0";
+        bubble.style.transform = "translateY(20px)";
+        setTimeout(function() {
+          bubble.style.opacity = "1";
+          bubble.style.transform = "translateY(0)";
+        }, 300);
+      }
+    });
+  </script>
+
+</body>
+</html>

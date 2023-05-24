@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Upreak- Contact Us</title>
+    <link rel="shortcut icon" href="./images/main_logo.png" type="image/x-icon" height="100%" width="100%">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      p{
+        font-size: 21px;
+      }
+      h1,h2,h4{
+        font-size: 25px;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    
+	  <%- include('includes/main_nav.ejs') %>
+    <!-- END nav -->
+    
+    <div class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact Us</span></p>
+            <h1 class="mb-3 bread">Our Contact Us</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+    <section class="m-4 p-5">
+        <section class="ftco-section contact-section services-section text-white">
+            <div class="container" id="contact">
+              <div class="row d-flex mb-5 contact-info">
+                <div class="col-md-12 mb-4 text-white">
+                  <h2 class="h3  text-white" style="font-size:50px;">Contact Information</h2>
+                  <p>We're always happy to hear from you! Whether you're looking for your next job opportunity or searching for the perfect candidate for your team, our dedicated team of recruiters is here to help.</p>
+                </div>
+                <div class="w-100"></div>
+                <div class="col-md card text-dark m-1">
+                  <p class="text-justify"><span><b>Timing:</b></span><br> From 8:00am to 5:00pm, Monday through Saturday.<br> We are closed on weekends and major holidays.</p>
+                </div>
+                <div class="col-md card text-dark p-5 m-1">
+                  <p><span><b>Phone:</b><br></span> <a href="tel://1-800-UPREAK-JOBS" class="">1-800-UPREAK-JOBS  </a></p>
+                </div>
+                <div class="col-md card text-dark p-5 m-1">
+                  <p><span><b>Email:</b><br></span> <a href="mailto:info@upreak.com" class="">info@upreak.com</a></p>
+                </div>
+                <div class="col-md card text-dark p-5 m-1">
+                  <p><span><b>Website:</b><br></span> <a href="http://upreak.com/" class="">upreak.com</a></p>
+                </div>
+              </div>
+              <div class="row block-9">
+                <div class="col-md-6 order-md-last d-flex">
+                    <form action="/save_contact" class="bg-white p-5 contact-form" method="POST">
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="name" id="nameInput" placeholder="Your Name" required>
+                        </div>
+                        <div class="form-group">
+                          <input type="email" class="form-control" name="email"id="emailInput" placeholder="Your Email" required>
+                        </div>
+                        <div class="form-group">
+                          <input type="text" class="form-control" name="subject"id="subjectInput" placeholder="Subject" required>
+                        </div>
+                        <div class="form-group">
+                          <textarea id="messageInput" cols="30" name="message" rows="7" class="form-control" placeholder="Message" required></textarea>
+                        </div>
+                        <div class="form-group">
+                          <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                        </div>
+                    </form>
+                      
+                    
+                      
+                
+                </div>
+      
+                <div class="col-md-6 d-flex">
+                    <div id="map" class="bg-white"></div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </section>
+
+    <section class="m-4 p-5 ">
+      <div class="row justify-content-center">
+        <div class="col-6  m-1 p-5 bg-dark text-white rounded">
+          <h3 class="text-white-50">Job Seekers</h3>
+        <p>Are you ready to take the next step in your career? Our team of recruiters is here to help you find the perfect job opportunity that matches your skills and experience. Contact us today to start your job search!</p>
+        <b>Email: <a class="text-warning" href="mailto:jobs@upreak.com">jobs@upreak.com</a></b>
+        </div>
+        <br>
+        <div class="col-5 m-1 p-5 bg-dark text-white rounded">
+          <h3 class="text-white-50">Recruiter/HR</h3>
+        <p>If you are a freelance recruiter/HR looking for new opportunities work with a reputable recruitment company, Upreak can help. We offer flexible, freelance arrangements that allow you to work on your own terms, while still benefiting from the support and resources of a professional team.</p>
+        <b>Email: <a class="text-warning" href="mailto:jobs@upreak.com">jobs@upreak.com</a></b>
+        </div>
+        <br>
+        <div class="col-5 m-1 p-5 bg-dark text-white rounded">
+          <h3 class="text-white-50">Employers</h3>
+        <p>Are you looking for the best talent to join your team? Our team of recruiters can help you find the right candidate for your organization. Contact us today to learn more about our recruitment services.</p>
+        <b>Email: <a class="text-warning" href="mailto:employers@upreak.com">employers@upreak.com</a></b>
+        </div>
+        <br>
+        <div class="col-6 m-1 p-5 bg-dark text-white rounded">
+          <h3 class="text-white-50">Feedback</h3>
+        <p>We're always looking for ways to improve our services and make your experience better. If you have any feedback or suggestions, please don't hesitate to contact us.</p>
+        <b>Email: <a class="text-warning" href="mailto:feedback@upreak.com">feedback@upreak.com</a></b>
+        </div>
+      </div>
+      <br>
+      <h1 class="text-center justify-content-center">Thank you for considering Upreak as your potential employer or partner.<br>We look forward to hearing from you soon!</h1>
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+    </section>
+
+    <%- include('includes/main_footer.ejs') %>
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+  <script>
+    function sendEmail(event) {
+      event.preventDefault(); // Prevent form submission
+  
+      // Get form input values
+      var name = document.getElementById('nameInput').value;
+      var email = document.getElementById('emailInput').value;
+      var subject = document.getElementById('subjectInput').value;
+      var message = document.getElementById('messageInput').value;
+  
+      // Prepare the email body
+      var body = "Name: " + name + "\n";
+      body += "Email: " + email + "\n";
+      body += "Subject: " + subject + "\n";
+      body += "Message: " + message;
+  
+      // Send the email using a mailto link
+      var mailtoLink = "mailto:ersrivastavarishabh@gmail.com?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+      window.location.href = mailtoLink;
+  
+      // Show alert based on the success or failure of opening the email client
+      setTimeout(function() {
+        var isEmailClientOpened = document.hasFocus(); // Check if the email client is opened
+        if (isEmailClientOpened) {
+          alert("Email sent successfully!");
+        } else {
+          alert("Failed to send email. Please check if you have an email client configured.");
+        }
+      }, 500);
+    }
+  </script>
+  
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Upreak- Registration</title>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="./images/main_logo.png" type="image/x-icon" height="100%" width="100%">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+
+    <link rel="stylesheet" href="css/ionicons.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+      p{
+        font-size: 21px;
+      }
+      h1,h2,h4{
+        font-size: 25px;
+        font-weight: 800;
+      }
+      label{
+        color: black;
+        font-weight: 800;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <%- include('includes/main_nav.ejs') %>
+    <!-- END nav -->
+    
+    <div class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-end justify-content-start">
+          <div class="col-md-12 ftco-animate text-center mb-5">
+          	<p class="breadcrumbs mb-0"><span class="mr-3"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Registration</span></p>
+            <h1 class="mb-3 bread">Our Registration</h1>
+          </div>
+        </div>
+    </div>
+</div>
+<!-- <h1 class="m-5 text-center text-uppercase">Registration Recruitment Partner</h1> -->
+<section class="ftco-section-parallax">
+        <div class="parallax-img d-flex align-items-center">
+          <div class="container">
+            <div class="row d-flex justify-content-center justify-content-between">
+              <div class="col-md-6 mt-5 pt-5 text-center heading-section heading-section-white ftco-animate">
+                <h2>Registration Recruitment Partner</h2>
+                <p class="text-justify">Welcome to Upreak, the recruitment partner that empowers you to earn big while helping others find their dream jobs! If you're interested in becoming a part of our team and enjoying the benefits of being a recruitment partner, fill out the form below and kickstart your journey towards unlimited earning potential.
+                </p>
+              </div>
+              <div class="col-md-6 card p-5">
+                <h3 class="text-center">Registration Form</h3>
+                <form method="POST" action="/save_partner">
+                  <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" class="form-control" id="fullName" name="name" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="contactNumber">Contact Number</label>
+                    <input type="text" class="form-control" id="contactNumber" name="number" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" name="city" required>
+                  </div>
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    <section class="m-5 p-4 text-justify">
+        
+
+        <h1>Benefit of joining Upreak</h1>
+        <p class="p-3" style="font-size: 22px;color: #000;;line-height: 2.2;">
+            By joining Upreak as a recruitment partner, you can enjoy the following benefits:
+            <br>
+
+<b>1) Earn Up to 40% Per Demand :</b> We offer generous commission rates of up to 40% for every successful job placement you facilitate. The more demands you fulfill, the more you earn!
+<br>
+<b>2) No Limit on Demands or Earnings :</b> At Upreak, there are no restrictions on the number of demands you can accept or the amount you can earn. Your potential is limitless!
+<br>
+<b>3) Hassle-Free Payouts :</b> Once the payment is credited to our account, we ensure you receive your fair share after deducting TDS (Tax Deducted at Source). We value transparency and timely compensation.
+<br>
+<b>4) Freedom and Flexibility :</b> Say goodbye to job security concerns and work hour restrictions. As a recruitment partner, you have the freedom to work at your own pace, enabling you to enjoy a happy earning experience.
+<br>
+Here are the simple steps to get started:
+<br>
+<b>1)  Fill in Your Basic Details :</b> Complete the registration form provided above with your full name, email address, contact number, and city.
+<br>
+<b> 2) Our Team Will Contact You :</b> Once you submit the form, our dedicated team will reach out to you promptly. They will guide you through the registration process and answer any questions you may have.
+<br>
+<b>3) Start Earning :</b> After your registration is successfully completed, you can start accepting demands and earning commissions right away. It's that simple!
+<br>
+Join Upreak today and become a part of our dynamic team of recruitment partners. Together, let's make a difference in people's lives while enjoying the rewards of a successful partnership.
+Thank you for your interest in becoming a Recruitment Partner with Upreak. We look forward to welcoming you to our team and helping you achieve your financial goals. Should you have any further inquiries, please feel free to reach out to our support team. Happy earning!
+
+        </p>
+    </section>
+
+    <%- include('includes/main_footer.ejs') %>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/aos.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+    <script>
+        // script.js
+
+// Function to send an email using SMTP
+function sendEmail(formData) {
+  Email.send({
+    Host: "smtp.gmail.com",
+    Username: "developercodify@gmail.com",
+    Password: "Harshit@rish374",
+    To: "harshitsrivastava374@gmail.com",
+    From: "developercodify@gmail.com",
+    Subject: "Registration Form Submission",
+    Body: `
+      Full Name: ${formData.fullName}
+      Email Address: ${formData.email}
+      Contact Number: ${formData.contactNumber}
+      City: ${formData.city}
+    `
+  }).then(function(message) {
+    if (message === "OK") {
+      alert("Email sent successfully!");
+    } else {
+      alert("Failed to send email. Please try again later.");
+    }
+  });
+}
+
+// Handle form submission
+document.getElementById("registrationForm").addEventListener("submit", function(event) {
+  event.preventDefault(); // Prevent form from being submitted
+
+  // Get form values
+  const fullName = document.getElementById("fullName").value;
+  const email = document.getElementById("email").value;
+  const contactNumber = document.getElementById("contactNumber").value;
+  const city = document.getElementById("city").value;
+
+  // Create an object with form data
+  const formData = {
+    fullName: fullName,
+    email: email,
+    contactNumber: contactNumber,
+    city: city
+  };
+
+  // Send the email
+  sendEmail(formData);
+});
+
+    </script>
+  </body>
+</html>
